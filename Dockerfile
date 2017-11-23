@@ -22,8 +22,7 @@ USER docker
 ENV HOME=/home/docker
 WORKDIR $HOME
 
-# Create symlink to credentials file in mounted folder
-RUN mkdir $HOME/credentials
+# Create symlink to credentials directory which should be mounted at runtime
 RUN ln -s $HOME/credentials/netrc $HOME/.netrc
 
 # Download QA script to run
