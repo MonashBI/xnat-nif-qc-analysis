@@ -1,8 +1,8 @@
 import os.path
 import logging
 from nianalysis.nodes import Node
-from xnat_auto_qc.testing import BaseTestCase
-from xnat_auto_qc.interface.qc import QCMetrics
+from xnat_nif_qc_analysis.testing import BaseTestCase
+from xnat_nif_qc_analysis.interface.qc import QCMetrics
 
 logger = logging.getLogger('NiAnalysis')
 

@@ -3,8 +3,8 @@ from nipype import config
 config.enable_debug_mode()
 from nianalysis.dataset import Dataset  # @IgnorePep8
 from nianalysis.data_formats import dicom_format  # @IgnorePep8
-from xnat_auto_qc.testing import BaseTestCase as TestCase  # @IgnorePep8 @Reimport
-from xnat_auto_qc.study.phantom import PhantomStudy  # @IgnorePep8
+from xnat_nif_qc_analysis.testing import BaseTestCase as TestCase  # @IgnorePep8 @Reimport
+from xnat_nif_qc_analysis.study.phantom import PhantomStudy  # @IgnorePep8
 
 
 class TestPhantomQC(TestCase):
