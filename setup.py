@@ -17,7 +17,7 @@ setup(
     author='Tom G. Close',
     author_email='tom.g.close@gmail.com',
     packages=find_packages(),
-    url='https://github.com/mbi-image/xnat-qc-analysis',
+    url='https://github.com/mbi-image/xnat-nif-qc-analysis',
     license='The MIT License (MIT)',
     description=(
         'A package for analysing QC data collected according to the'
