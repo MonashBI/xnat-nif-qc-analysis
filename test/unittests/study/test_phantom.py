@@ -3,7 +3,7 @@ from nipype import config
 config.enable_debug_mode()
 from nianalysis.dataset import Dataset  # @IgnorePep8
 from nianalysis.data_formats import dicom_format  # @IgnorePep8
-from nianalysis.testing import BaseTestCase as TestCase  # @IgnorePep8 @Reimport
+from xnat_auto_qc.testing import BaseTestCase as TestCase  # @IgnorePep8 @Reimport
 from xnat_auto_qc.study.phantom import PhantomStudy  # @IgnorePep8
 
 

@@ -2,7 +2,7 @@ from nianalysis.data_formats import dicom_format, nifti_format, nifti_gz_format
 from nianalysis.study.base import set_data_specs, Study
 from nianalysis.interfaces.mrtrix import MRConvert
 from nianalysis.dataset import DatasetSpec, FieldSpec
-from nianalysis.interfaces.custom.qc import QCMetrics
+from xnat_auto_qc.interface.qc import QCMetrics
 
 
 class PhantomStudy(Study):
