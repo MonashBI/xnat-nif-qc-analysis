@@ -19,19 +19,11 @@ RUN echo "set number" >> $HOME/.vimrc
 RUN echo "set autoindent" >> $HOME/.vimrc
 
 # Download QA script to run
+RUN echo "BUILD 2"
 RUN git clone https://github.com/mbi-image/xnat-nif-qc-analysis.git $HOME/repo
 ENV PYTHONPATH $HOME/repo:$PYTHONPATH
-WORKDIR $HOME/repo
-ENV SERVER 'https://mbi-xnat.erc.monash.edu.au'
-ENV T132CH 't1_mprage_trans_p2_iso_0.9_32CH'
-ENV T232CH 't2_spc_tra_iso_32CH'
-ENV DMRI32CH 'ep2d_diff_mddw_12_p2_32CH'
-ENV INSTRUMENTS 'AWP45193'
-ENV VISITS '20170724'
-RUN python scripts/analyse_qc.py $SERVER \
-    -p t1_32ch_saline $T132CH \
-    -p t2_32ch_saline $T232CH \
-    -p dmri_32ch_saline $DMRI32CH \
-    -w $WORK_DIR \
-    -i $INSTRUMENTS \
-    -v $VISITS
+
+# Echo the analysis script to run
+RUN echo "python $HOME/repo/scripts/analyse_qc.py https://mbi-xnat.erc.monash.edu.au \
+-p t1_32ch t1_mprage_trans_p2_iso_0.9_32CH -p t2_32ch t2_spc_tra_iso_32CH -p dmri_32ch ep2d_diff_mddw_12_p2_32CH \
+-w $WORK_DIR -i AWP45193 -d 20170724"
