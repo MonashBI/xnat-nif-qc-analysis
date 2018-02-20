@@ -164,11 +164,12 @@ class QCMetrics(BaseInterface):
         signal = qc[signal_mask]
         ghost = qc[ghost_mask]
         background = qc[background_mask]
-        snr = np.sqrt(2) * np.mean(signal) / np.std(background)
-        uniformity = (
+        snr = float(np.sqrt(2) * np.mean(signal) / np.std(background))
+        uniformity = float(
             100.0 * (signal.max() - signal.min()) /
             (signal.max() + signal.min()))
-        ghost_intensity = 100.0 * np.mean(signal) / np.mean(ghost)
+        ghost_intensity = 100.0 * float(np.mean(signal) /
+                                        np.mean(ghost))
         # Save masked images to file
         signal_fname = self._gen_filename('signal')
         ghost_fname = self._gen_filename('ghost')

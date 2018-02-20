@@ -1,6 +1,7 @@
 from nianalysis.data_formats import dicom_format, nifti_format, nifti_gz_format
 from nianalysis.study.base import set_data_specs, Study
 from nianalysis.interfaces.mrtrix import MRConvert
+from nianalysis.requirements import mrtrix3_req
 from nianalysis.dataset import DatasetSpec, FieldSpec
 from xnat_nif_qc_analysis.interface.qc import QCMetrics
 
@@ -89,7 +90,8 @@ class PhantomStudy(Study):
             citations=[],
             options=options)
         mrconvert = pipeline.create_node(interface=MRConvert(),
-                                         name='mrconvert')
+                                         name='mrconvert',
+                                         requirements=[mrtrix3_req])
         mrconvert.inputs.coord = (3, 0)
         mrconvert.inputs.axes = '0,1,2'
         mrconvert.inputs.out_ext = '.nii.gz'
