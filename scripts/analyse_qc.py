@@ -3,7 +3,6 @@
 Script to automatically analyse QC data acquiried according to the NIF
 TDRS SOP.
 """
-import os.path
 from collections import defaultdict
 from argparse import ArgumentParser
 from nianalysis.dataset import Dataset
@@ -49,6 +48,8 @@ parser.add_argument('--option', '-o', nargs=3, action='append',
                     help=("Change a pipeline option from the default "
                           "(available options: '{}')".format(
                               "', '".join(AVAIL_OPTIONS))))
+parser.add_argument('--work_dir', '-w', type=str, default=None,
+                    help="Working directory for the pipeline")
 args = parser.parse_args()
 
 # Create phantom study
@@ -81,5 +82,4 @@ for phantom, _ in args.phantom:
         subject_ids=instruments,
         visit_ids=args.dates,
         reprocess=('all' if args.reprocess else False),
-        work_dir=os.path.join(os.path.dirname(__file__), '..',
-                              'test', 'data', 'work', 'analyze_qc'))
+        work_dir=args.work_dir)

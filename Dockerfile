@@ -4,6 +4,9 @@ FROM nianalysis
 RUN useradd -ms /bin/bash docker
 USER docker
 ENV HOME=/home/docker
+ENV WORK_DIR = $HOME/work-dir 
+
+RUN mkdir -p $WORK_DIR 
 
 # Create symlink to credentials directory which should be mounted at runtime
 RUN ln -s $HOME/credentials/netrc $HOME/.netrc
@@ -20,6 +23,14 @@ RUN git clone https://github.com/mbi-image/xnat-nif-qc-analysis.git $HOME/repo
 WORKDIR $HOME/repo
 ENV SERVER 'https://mbi-xnat.erc.monash.edu.au'
 ENV T132CH 't1_mprage_trans_p2_iso_0.9_32CH'
-ENV T132CH 't2_spc_tra_iso_32CH'
-ENV T132CH 'ep2d_diff_mddw_12_p2_32CH'
-RUN python scripts/analyse_qc.py
+ENV T232CH 't2_spc_tra_iso_32CH'
+ENV DMRI32CH 'ep2d_diff_mddw_12_p2_32CH'
+ENV INSTRUMENTS 'AWP45193'
+ENV VISITS '20170724'
+RUN python scripts/analyse_qc.py $SERVER \
+    -p t1_32ch_saline $T132CH \
+    -p t2_32ch_saline $T232CH \
+    -p dmri_32ch_saline $DMRI32CH \
+    -w $WORK_DIR \
+    -i $INSTRUMENTS \
+    -v $VISITS
