@@ -18,4 +18,8 @@ RUN echo "set autoindent" >> $HOME/.vimrc
 # Download QA script to run
 RUN git clone https://github.com/mbi-image/xnat-nif-qc-analysis.git $HOME/repo
 WORKDIR $HOME/repo
+ENV SERVER 'https://mbi-xnat.erc.monash.edu.au'
+ENV T132CH 't1_mprage_trans_p2_iso_0.9_32CH'
+ENV T132CH 't2_spc_tra_iso_32CH'
+ENV T132CH 'ep2d_diff_mddw_12_p2_32CH'
 RUN python scripts/analyse_qc.py
