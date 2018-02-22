@@ -19,9 +19,10 @@ RUN echo "set number" >> $HOME/.vimrc
 RUN echo "set autoindent" >> $HOME/.vimrc
 
 # Download QA script to run
-RUN echo "BUILD 2"
+RUN echo "BUILD 4"
 RUN git clone https://github.com/mbi-image/xnat-nif-qc-analysis.git $HOME/repo
 ENV PYTHONPATH $HOME/repo:$PYTHONPATH
+ENV PATH $HOME/repo/scripts:$PATH
 WORKDIR $HOME
 
 # Echo the analysis script to run

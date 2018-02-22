@@ -1,0 +1,70 @@
+{
+  "name": "XNAT Scan Number Check",
+  "label": null,
+  "description": "Runs QA on ingested Scanning Session",
+  "version": "1.0",
+  "schema-version": "1.0",
+  "info-url": null,
+  "image": "xnat/debug-command:1.2",
+  "type": "docker",
+  "index": null,
+  "working-directory": null,
+  "command-line": "run.sh #SCANS# #DICOM#",
+  "mounts": [
+    {
+      "name": "input",
+      "writable": false,
+      "path": "/input"	  
+    }
+  ],
+  "environment-variables": {},
+  "ports": {},
+  "inputs": [
+    {
+      "name": "Required Scans Count",
+      "description": "Number of Required Scans",
+      "type": "string",
+      "matcher": null,
+      "default-value": "",
+      "required": true,
+      "replacement-key": "#SCANS#",
+      "command-line-flag": null,
+      "command-line-separator": null,
+      "true-value": null,
+      "false-value": null
+    },
+    {
+      "name": "Expected DICOM Files Count",
+      "description": "Number of expected DICOM Files in each Scan",
+      "type": "string",
+      "matcher": null,
+      "default-value": null,
+      "required": true,
+      "replacement-key": "#DICOM#",
+      "command-line-flag": null,
+      "command-line-separator": null,
+      "true-value": null,
+      "false-value": null
+    }
+  ],
+  "outputs": [],
+  "xnat": [
+    {
+      "name": "Xnat-Scan-Number-Check",
+      "description": "Run QA on injested scanning session",
+      "contexts": ["xnat:imageSessionData"],
+      "external-inputs": [
+	    {
+          "name": "session",
+          "description": "Input session",
+          "type": "Session",
+          "required": true,
+          "provides-files-for-command-mount": "input",
+          "load-children": false
+        }
+	  ],
+      "derived-inputs": [],
+      "output-handlers": []
+    }
+  ]
+}
