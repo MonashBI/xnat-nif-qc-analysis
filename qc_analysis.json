@@ -1,7 +1,7 @@
 {
-  "name": "XNAT Scan Number Check",
+  "name": "QC Analysis",
   "label": null,
-  "description": "Runs QA on ingested Scanning Session",
+  "description": "Analyses QC sessions acquired as per the NIF TDRS SOP",
   "version": "1.0",
   "schema-version": "1.0",
   "info-url": null,
@@ -9,7 +9,7 @@
   "type": "docker",
   "index": null,
   "working-directory": null,
-  "command-line": "run.sh #SCANS# #DICOM#",
+  "command-line": "pipeline_cmd #T1# #T2# #DMRI#",
   "mounts": [
     {
       "name": "input",
@@ -21,37 +21,50 @@
   "ports": {},
   "inputs": [
     {
-      "name": "Required Scans Count",
-      "description": "Number of Required Scans",
+      "name": "T1 32Ch Saline Phantom",
+      "description": "T1-weighted saline phantom with 32 Channel Head Coil",
       "type": "string",
       "matcher": null,
       "default-value": "",
       "required": true,
-      "replacement-key": "#SCANS#",
+      "replacement-key": "#T1#",
       "command-line-flag": null,
       "command-line-separator": null,
       "true-value": null,
       "false-value": null
     },
     {
-      "name": "Expected DICOM Files Count",
-      "description": "Number of expected DICOM Files in each Scan",
+      "name": "T2 32Ch Saline Phantom",
+      "description": "T2-weighted saline phantom with 32 Channel Head Coil",
       "type": "string",
       "matcher": null,
-      "default-value": null,
+      "default-value": "",
       "required": true,
-      "replacement-key": "#DICOM#",
+      "replacement-key": "#T1#",
       "command-line-flag": null,
       "command-line-separator": null,
       "true-value": null,
       "false-value": null
-    }
+    },
+    {
+      "name": "dMRI 32Ch Saline Phantom",
+      "description": "Diffusion MRI saline phantom with 32 Channel Head Coil",
+      "type": "string",
+      "matcher": null,
+      "default-value": "",
+      "required": true,
+      "replacement-key": "#T1#",
+      "command-line-flag": null,
+      "command-line-separator": null,
+      "true-value": null,
+      "false-value": null
+    },
   ],
   "outputs": [],
   "xnat": [
     {
-      "name": "Xnat-Scan-Number-Check",
-      "description": "Run QA on injested scanning session",
+      "name": "QC Analysis",
+      "description": "Analyses QC sessions acquired as per the NIF TDRS SOP",
       "contexts": ["xnat:imageSessionData"],
       "external-inputs": [
 	    {
