@@ -1,4 +1,4 @@
-FROM nianalysis
+FROM monashbiomedicalimaging/nianalysis
 
 # Add docker user
 RUN useradd -ms /bin/bash docker
