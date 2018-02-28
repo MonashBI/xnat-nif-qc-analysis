@@ -5,11 +5,11 @@
   "version": "1.0",
   "schema-version": "1.0",
   "info-url": null,
-  "image": "xnat/debug-command:1.2",
+  "image": "monashbiomedicalimaging/xnat-nif-qc-analysis",
   "type": "docker",
   "index": null,
   "working-directory": null,
-  "command-line": "pipeline_cmd #T1# #T2# #DMRI#",
+  "command-line": "pipeline_cmd #SESSION# #T1# #T2# #DMRI#",
   "mounts": [
     {
       "name": "input",
@@ -21,8 +21,8 @@
   "ports": {},
   "inputs": [
     {
-      "name": "T1 32Ch Saline Phantom",
-      "description": "T1-weighted saline phantom with 32 Channel Head Coil",
+      "name": "T1 32Ch Scan Name",
+      "description": "Name of the T1-weighted saline phantom with 32 Channel Head Coil",
       "type": "string",
       "matcher": null,
       "default-value": "",
@@ -34,26 +34,26 @@
       "false-value": null
     },
     {
-      "name": "T2 32Ch Saline Phantom",
-      "description": "T2-weighted saline phantom with 32 Channel Head Coil",
+      "name": "T2 32Ch Scan Name",
+      "description": "Name of the T2-weighted saline phantom with 32 Channel Head Coil",
       "type": "string",
       "matcher": null,
       "default-value": "",
       "required": true,
-      "replacement-key": "#T1#",
+      "replacement-key": "#T2#",
       "command-line-flag": null,
       "command-line-separator": null,
       "true-value": null,
       "false-value": null
     },
     {
-      "name": "dMRI 32Ch Saline Phantom",
-      "description": "Diffusion MRI saline phantom with 32 Channel Head Coil",
+      "name": "dMRI 32Ch Scan Name",
+      "description": "Name of the Diffusion MRI saline phantom with 32 Channel Head Coil",
       "type": "string",
       "matcher": null,
       "default-value": "",
       "required": true,
-      "replacement-key": "#T1#",
+      "replacement-key": "#DMRI#",
       "command-line-flag": null,
       "command-line-separator": null,
       "true-value": null,
@@ -72,7 +72,7 @@
           "description": "Input session",
           "type": "Session",
           "required": true,
-          "provides-files-for-command-mount": "input",
+          "replacement-key": "#SESSION#",
           "load-children": false
         }
 	  ],
