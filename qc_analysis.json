@@ -9,14 +9,7 @@
   "type": "docker",
   "index": null,
   "working-directory": null,
-  "command-line": "pipeline_cmd #SESSION# #T1# #T2# #DMRI#",
-  "mounts": [
-    {
-      "name": "input",
-      "writable": false,
-      "path": "/input"	  
-    }
-  ],
+  "command-line": "pipeline_cmd.sh #SESSION# #T1# #T2# #DMRI#",
   "environment-variables": {},
   "ports": {},
   "inputs": [
@@ -58,7 +51,7 @@
       "command-line-separator": null,
       "true-value": null,
       "false-value": null
-    },
+    }
   ],
   "outputs": [],
   "xnat": [
