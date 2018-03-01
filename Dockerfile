@@ -1,4 +1,5 @@
 FROM monashbiomedicalimaging/nianalysis
+MAINTAINER Tom Close <tom.close@monash.edu>
 
 # Add docker user
 RUN useradd -ms /bin/bash docker
