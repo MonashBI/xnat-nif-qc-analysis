@@ -20,6 +20,6 @@ DATE=${SESSION##*_}
                 --dates "$DATE" \
                 --instrument "$INSTRUMENT" \
                 --work_dir /workdir \
-                --auth $XNAT_USER $XNAT_PASS
+                --auth "$XNAT_USER" "$XNAT_PASS"
                                   
                                   
