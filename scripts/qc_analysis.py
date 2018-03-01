@@ -9,6 +9,7 @@ from nianalysis.dataset import Dataset
 from nianalysis.archive.xnat import XNATArchive
 from nianalysis.data_formats import dicom_format
 from xnat_nif_qc_analysis.study.phantom import PhantomStudy
+import logging
 
 AVAIL_OPTIONS = [
     'threshold',
@@ -55,7 +56,16 @@ parser.add_argument('--auth', type=str, nargs=2, default=(None, None),
                           "XNAT"))
 args = parser.parse_args()
 
+logger = logging.getLogger('NiAnalysis')
+logger.setLevel(logging.DEBUG)
+handler = logging.StreamHandler()
+formatter = logging.Formatter("%(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+
 user, password = args.auth
+
+print('user: {}, password: {}'.format(user, password))
 
 # Create phantom study
 qc_study = PhantomStudy(

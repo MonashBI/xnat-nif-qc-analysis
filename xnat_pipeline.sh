@@ -12,7 +12,7 @@ INSTRUMENT=${SUBJECT#*_}
 DATE=${SESSION##*_}
 
 # Run the analysis script
-/usr/bin/python /repo/scripts/qc_analysis.py \
+echo /usr/bin/python /repo/scripts/qc_analysis.py \
                 $XNAT_HOST \
                 --phantom t1_32ch "$T1" \
                 --phantom t2_32ch "$T2" \
@@ -21,5 +21,13 @@ DATE=${SESSION##*_}
                 --instrument "$INSTRUMENT" \
                 --work_dir /workdir \
                 --auth "$XNAT_USER" "$XNAT_PASS"
-                                  
+/usr/bin/python /repo/scripts/qc_analysis.py \
+                $XNAT_HOST \
+                --phantom t1_32ch "$T1" \
+                --phantom t2_32ch "$T2" \
+                --phantom dmri_32ch "$DMRI" \
+                --dates "$DATE" \
+                --instrument "$INSTRUMENT" \
+                --work_dir /workdir \
+                --auth "$XNAT_USER" "$XNAT_PASS"                                  
                                   
