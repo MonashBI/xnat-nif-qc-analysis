@@ -9,9 +9,16 @@
   "type": "docker",
   "index": null,
   "working-directory": null,
-  "command-line": "qc_analysis_pipeline.sh #SESSION# #T1# #T2# #DMRI#",
+  "command-line": "#SESSION# #T1# #T2# #DMRI#",
   "environment-variables": {},
   "ports": {},
+  "mounts": [
+    {
+      "name": "workdir",
+      "writable": true,
+      "path": "/workdir"    
+    }
+  ],
   "inputs": [
     {
       "name": "T1 32Ch Scan Name",
