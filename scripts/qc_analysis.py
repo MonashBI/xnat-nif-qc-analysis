@@ -50,13 +50,19 @@ parser.add_argument('--option', '-o', nargs=3, action='append',
                               "', '".join(AVAIL_OPTIONS))))
 parser.add_argument('--work_dir', '-w', type=str, default=None,
                     help="Working directory for the pipeline")
+parser.add_argument('--auth', type=str, nargs=2, default=(None, None),
+                    help=("Username and password required to log into "
+                          "XNAT"))
 args = parser.parse_args()
+
+user, password = args.auth
 
 # Create phantom study
 qc_study = PhantomStudy(
     name='qc',
     project_id='INSTRUMENT',
-    archive=XNATArchive(server=args.server),
+    archive=XNATArchive(server=args.server, user=user,
+                        password=password),
     inputs=dict(('{}_saline'.format(n), Dataset(s, dicom_format))
                 for n, s in args.phantom))
 
