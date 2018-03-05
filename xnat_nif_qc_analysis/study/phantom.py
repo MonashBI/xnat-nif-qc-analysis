@@ -1,5 +1,5 @@
 from nianalysis.data_formats import dicom_format, nifti_format, nifti_gz_format
-from nianalysis.study.base import set_data_specs, Study
+from nianalysis.study.base import set_specs, Study
 from nianalysis.interfaces.mrtrix import MRConvert
 from nianalysis.requirements import mrtrix3_req
 from nianalysis.dataset import DatasetSpec, FieldSpec
@@ -102,7 +102,7 @@ class PhantomStudy(Study):
         pipeline.assert_connected()
         return pipeline
 
-    _data_specs = set_data_specs(
+    _data_specs = set_specs(
         DatasetSpec('t1_32ch_saline', dicom_format),
         DatasetSpec('t2_32ch_saline', dicom_format),
         DatasetSpec('dmri_32ch_saline', dicom_format),

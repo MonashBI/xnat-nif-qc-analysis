@@ -9,6 +9,7 @@ from nianalysis.dataset import Dataset
 from nianalysis.archive.xnat import XNATArchive
 from nianalysis.data_formats import dicom_format
 from xnat_nif_qc_analysis.study.phantom import PhantomStudy
+import xnat
 import logging
 
 AVAIL_OPTIONS = [
@@ -66,6 +67,9 @@ logger.addHandler(handler)
 user, password = args.auth
 
 print('user: {}, password: {}'.format(user, password))
+
+with xnat.connect(args.server, user=user, password=password) as mbi_xnat:
+    print("Available projects: {}".format(', '.join(mbi_xnat.projects.keys())))
 
 # Create phantom study
 qc_study = PhantomStudy(

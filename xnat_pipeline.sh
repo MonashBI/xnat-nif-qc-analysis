@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
 # Map bash arguments to local variables
-SESSION=$1
-T1=$2
-T2=$3
-DMRI=$4
+export SESSION=$1
+export T1=$2
+export T2=$3
+export DMRI=$4
 
 # Derive instrument ID and date from session id
-SUBJECT=${SESSION%_*}
-INSTRUMENT=${SUBJECT#*_}
-DATE=${SESSION##*_}
+export SUBJECT=${SESSION%_*}
+export INSTRUMENT=${SUBJECT#*_}
+export DATE=${SESSION##*_}
 
 # Run the analysis script
 echo /usr/bin/python /repo/scripts/qc_analysis.py \
@@ -30,4 +30,3 @@ echo /usr/bin/python /repo/scripts/qc_analysis.py \
                 --instrument "$INSTRUMENT" \
                 --work_dir /workdir \
                 --auth "$XNAT_USER" "$XNAT_PASS"                                  
-                                  

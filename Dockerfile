@@ -2,7 +2,7 @@ FROM monashbiomedicalimaging/nianalysis
 MAINTAINER Tom Close <tom.close@monash.edu>
 
 # Download QA script to run
-ENV REFRESHED_AT 2018-03-02-09:41
+ENV REFRESHED_AT 2018-03-05-12:19
 RUN git clone https://github.com/mbi-image/xnat-nif-qc-analysis.git /repo
 ENV PYTHONPATH /repo:$PYTHONPATH
 
