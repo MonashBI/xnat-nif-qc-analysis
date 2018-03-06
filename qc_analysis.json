@@ -9,7 +9,7 @@
   "type": "docker",
   "index": null,
   "working-directory": null,
-  "command-line": "#SESSION# #T1# #T2# #DMRI#",
+  "command-line": "#SESSION_ID# #T1# #T2# #DMRI#",
   "environment-variables": {},
   "ports": {},
   "mounts": [
@@ -20,6 +20,13 @@
     }
   ],
   "inputs": [
+    {
+      "name": "session_id",
+      "description": "XNAT ID of the session",
+      "type": "string",
+      "required": true,
+      "replacement-key": "#SESSION_ID#"
+    },
     {
       "name": "T1 32Ch Scan Name",
       "description": "Name of the T1-weighted saline phantom with 32 Channel Head Coil",
@@ -71,12 +78,19 @@
           "name": "session",
           "description": "Input session",
           "type": "Session",
-          "required": true,
-          "replacement-key": "#SESSION#",
-          "load-children": false
+          "required": true
         }
 	  ],
-      "derived-inputs": [],
+      "derived-inputs": [
+        {
+          "name": "session-id",
+          "description": "The session's id",
+          "type": "string",
+          "derived-from-wrapper-input": "session",
+          "derived-from-xnat-object-property": "id",
+          "provides-value-for-command-input": "session_id"
+        }
+      ],
       "output-handlers": []
     }
   ]
