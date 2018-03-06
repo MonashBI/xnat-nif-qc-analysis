@@ -66,6 +66,7 @@ logger.addHandler(handler)
 
 user, password = args.auth
 
+print('XnatPy version: {}'.format(xnat.__version__)
 print('user: {}, password: {}'.format(user, password))
 
 with xnat.connect(args.server, user=user, password=password) as mbi_xnat:
