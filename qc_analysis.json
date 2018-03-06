@@ -9,7 +9,7 @@
   "type": "docker",
   "index": null,
   "working-directory": null,
-  "command-line": "#SESSION_ID# #T1# #T2# #DMRI#",
+  "command-line": "#SESSIONID# #T1# #T2# #DMRI#",
   "environment-variables": {},
   "ports": {},
   "mounts": [
@@ -21,11 +21,11 @@
   ],
   "inputs": [
     {
-      "name": "session_id",
+      "name": "Session ID",
       "description": "XNAT ID of the session",
       "type": "string",
       "required": true,
-      "replacement-key": "#SESSION_ID#"
+      "replacement-key": "#SESSIONID#"
     },
     {
       "name": "T1 32Ch Scan Name",
