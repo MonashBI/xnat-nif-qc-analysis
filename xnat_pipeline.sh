@@ -6,10 +6,19 @@ export T1=$2
 export T2=$3
 export DMRI=$4
 
+echo "SESSION $SESSION"
+echo "T1 $T1"
+echo "T2 $T2"
+echo "DMRI $DMRI"
+
 # Derive instrument ID and date from session id
 export SUBJECT=${SESSION%_*}
 export INSTRUMENT=${SUBJECT#*_}
 export DATE=${SESSION##*_}
+
+echo "SUBJECT $SUBJECT"
+echo "INSTRUMENT $INSTRUMENT"
+echo "DATE $DATE"
 
 # Run the analysis script
 echo /usr/bin/python /repo/scripts/qc_analysis.py \
