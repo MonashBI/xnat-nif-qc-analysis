@@ -88,7 +88,7 @@
           "type": "string",
           "derived-from-wrapper-input": "session",
           "derived-from-xnat-object-property": "id",
-          "provides-value-for-command-input": "session_id"
+          "provides-value-for-command-input": "Session ID"
         }
       ],
       "output-handlers": []
