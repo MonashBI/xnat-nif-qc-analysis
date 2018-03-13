@@ -9,7 +9,7 @@
   "type": "docker",
   "index": null,
   "working-directory": null,
-  "command-line": "#SESSIONID# #T1# #T2# #DMRI#",
+  "command-line": "/repo/xnat_pipeline.sh #SESSIONID# #T1# #T2# #DMRI#",
   "environment-variables": {},
   "ports": {},
   "mounts": [
