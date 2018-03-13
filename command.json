@@ -87,7 +87,7 @@
           "description": "The session's id",
           "type": "string",
           "derived-from-wrapper-input": "session",
-          "derived-from-xnat-object-property": "id",
+          "derived-from-xnat-object-property": "label",
           "provides-value-for-command-input": "Session ID"
         }
       ],
